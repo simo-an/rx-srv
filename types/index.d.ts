@@ -1,5 +1,4 @@
-
-export interface RxService {
-  constructor: (name: string) => {}
+export default class RxService {
+  constructor()
   observe: () => {}
 }

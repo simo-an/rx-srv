@@ -17,18 +17,16 @@ export function proxy(target: object, sourceKey: string, key: string) {
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
-class RxService extends Vue {
+class RxService {
   private __data: object = {}
 
-  constructor(name: string = 'RxService') {
-    super({ name });
-  }
+  constructor() { }
 
   public observe() {
     Reflect.ownKeys(this).forEach((key: string) => {
       if (key.startsWith('_') || key.startsWith('$')) return
 
-      this.$set(this['__data'], key, this[key])
+      this['__data'][key] = this[key]
 
       Reflect.deleteProperty(this, key)
 
