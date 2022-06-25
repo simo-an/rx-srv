@@ -10,7 +10,7 @@ yarn add reflect-metadata -D
 yarn add typedi -D
 ```
 
-The you need to import 'reflect-metadata' at first
+Then you need to import 'reflect-metadata' at first
 
 ```typescript
 import 'reflect-metadata'

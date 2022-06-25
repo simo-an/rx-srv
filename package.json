@@ -1,6 +1,6 @@
 {
   "name": "rx-srv",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A reactive service provider for Vue2",
   "main": "dist/rx-srv.js",
   "typings": "types/index.d.ts",
