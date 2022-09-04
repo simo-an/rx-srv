@@ -104,3 +104,27 @@ export default class App extends Vue {
 ```
 
 That is all, please have fun with rx-srv
+
+## Version Change Log
+
+### V1.03
+🌤️ New Feature:
+1. Support Watch API
+
+Example: 
+
+```typescript
+@Service()
+class UserService extends RxService {
+  public userAge: number = 18
+
+  constructor() {
+    super();
+    super.observe()
+    
+    this.watch(() => this.userAge, (val) => {
+      console.warn('user age changed', val)
+    })
+  }
+}
+```
