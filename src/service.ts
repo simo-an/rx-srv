@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, {WatchOptions} from "vue";
 
 const sharedPropertyDefinition = {
   enumerable: true,
@@ -34,6 +34,10 @@ class RxService {
     })
 
     Vue.observable(this['__data'])
+  }
+
+  public watch(getter: () => any, callback: (val: any) => void, options?: WatchOptions) {
+    return Vue.prototype.$watch(getter, callback, options)
   }
 }
 
