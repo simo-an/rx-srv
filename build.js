@@ -1,7 +1,6 @@
 const path = require("path");
 const fs = require("fs-extra");
 const rollup = require('rollup');
-const {spawn} = require("child_process")
 const typescript = require("rollup-plugin-typescript");
 
 const inputOptions = {
