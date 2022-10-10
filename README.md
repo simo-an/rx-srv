@@ -6,14 +6,6 @@
 
 ```bash
 yarn add rx-srv -D
-yarn add reflect-metadata -D
-yarn add typedi -D
-```
-
-Then you need to import 'reflect-metadata' at first
-
-```typescript
-import 'reflect-metadata'
 ```
 
 ## Usage
@@ -22,9 +14,7 @@ First, you should create a service
 
 ```typescript
 import RxService from 'rx-srv'
-import {Service} from "typedi";
 
-@Service()
 class UserService extends RxService {
 
   public userName: string = 'Tom'
@@ -47,17 +37,9 @@ class UserService extends RxService {
 
 }
 
-export default UserService
-```
+const userService = new UserService()
 
-Then, you can export the service at a single export
-
-```typescript
-import UserService from "@/service/user-service";
-import {Container} from "typedi";
-
-
-export const userService = Container.get(UserService)
+export default userService
 ```
 
 Finally, use it at page
@@ -68,7 +50,7 @@ Finally, use it at page
     User Info:
     <div>Name: {{userService.userName}}</div>
     <div>Age:  {{userService.userAge}}</div>
-    <div>Addr: {{userService.userAddress.province}} - {{userService.userAddress.city}}</div>
+    <div>Addr: {{userAddress}}</div>
 
     <div>
       <button @click="growUp">Grow Up</button>
@@ -77,29 +59,22 @@ Finally, use it at page
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import { userService } from "@/service";
+import { userService } from "@/service/user-service.ts";
 
-@Component
-export default class App extends Vue {
-  public userService = userService
-
-  public growUp() {
-    this.userService.growUp()
+export default {
+  computed: {
+    userAddress() {
+      return `${userService.userAddress.province} - ${userService.userAddress.city}`
+    }
+  },
+  methods: {
+    growUp() {
+      userService.growUp()
+    }
   }
 }
 
 </script>
-<style scoped>
-#app {
-   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-}
-</style>
 
 ```
 
@@ -129,7 +104,7 @@ class UserService extends RxService {
 }
 ```
 
-### V1.0.4
+### V1.0.5
 #### 🎉 New Feature
 1. Support Event Emitter
 
