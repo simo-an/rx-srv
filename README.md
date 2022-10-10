@@ -107,8 +107,8 @@ That is all, please have fun with rx-srv
 
 ## Version Change Log
 
-### V1.03
-🌤️ New Feature:
+### V1.0.3
+#### 🎉 New Feature
 1. Support Watch API
 
 Example: 
@@ -128,3 +128,29 @@ class UserService extends RxService {
   }
 }
 ```
+
+### V1.0.4
+#### 🎉 New Feature
+1. Support Event Emitter
+
+Example: 
+
+```typescript
+// emit an event
+userService.next('logged', payload)
+
+// listen an event
+userService.on('logged', () => {
+  // do something after logged
+})
+
+// cancel an event
+userService.off('logged')
+
+// emit an event only once
+userService.once('logged', payload)
+```
+
+#### ⚒ Bug Fix
+1. Fix lower vue version error
+
